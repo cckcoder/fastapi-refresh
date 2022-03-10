@@ -1,5 +1,7 @@
 from enum import Enum
 from logging import StrFormatStyle
+from optparse import Option
+from typing import Optional
 from fastapi import FastAPI
 
 
@@ -10,7 +12,7 @@ def index():
     return { "message": "Hello World!"}
 
 @app.get('/blog/all')
-def get_blog(page = 1, page_size = 10):
+def get_blog(page = 1, page_size: Optional[int] = None):
     return { "message": f"All {page_size} blogs on page {page}"}
 
 class BlogType(str, Enum):
