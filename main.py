@@ -16,6 +16,7 @@ def index():
     tags=["blog"],
     summary="Retrieve all blogs",
     description="This api call simulates refresh blog",
+    response_description="The list of available blogs"
 )
 def get_all_blog(page=1, page_size: Optional[int] = None):
     return {"message": f"All {page_size} blogs on page {page}"}
