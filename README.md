@@ -9,3 +9,6 @@
 def index(id):
     return { "message": f"Blog with id {id}"}
 ```
+
+# Status Code
+* 
