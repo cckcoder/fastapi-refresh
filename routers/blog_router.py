@@ -83,7 +83,7 @@ def create_comment(
         max_length=12,
         regex="^[a-z\s]*$"
     ),
-    v: Optional[List[str]] = Query(None)
+    v: Optional[List[str]] = Query(['1.0', '1.1', '1.2'])
  ):
     return {
         "blog": blog,
