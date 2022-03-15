@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import List, Optional
+from typing import List, Optional, Dict
 from fastapi import APIRouter, Response, status, Body, Query, Path
 from pydantic import BaseModel
 
@@ -50,6 +50,9 @@ def get_blog(id: int, response: Response):
         return {"error": f"blog {id} not found"}
     return {"message": f"Blog with id {id}"}
 
+class Image(BaseModel):
+    url: str
+    alias: str
 
 class BlogModel(BaseModel):
     title: str
@@ -57,6 +60,8 @@ class BlogModel(BaseModel):
     nb_comments: int
     published: Optional[bool]
     tags: List[str] = []
+    metadata: Dict[str, str] = { "key": "value"}
+    image: Optional[Image] = None
 
 
 @router.post("/new/{id}")
