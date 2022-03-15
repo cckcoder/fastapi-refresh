@@ -56,6 +56,7 @@ class BlogModel(BaseModel):
     content: str
     nb_comments: int
     published: Optional[bool]
+    tags: List[str] = []
 
 
 @router.post("/new/{id}")
