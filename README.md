@@ -12,3 +12,9 @@ def index(id):
 
 # Request
 * automatic JSON parse
+
+## Parameter metadata
+* Information displayed in docs
+* Using the Query, Path and Body imports
+* set default value
+    * `comment_id: int = Query(None)`
