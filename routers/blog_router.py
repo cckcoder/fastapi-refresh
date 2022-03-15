@@ -1,9 +1,13 @@
 from enum import Enum
 from typing import List, Optional, Dict
-from fastapi import APIRouter, Response, status, Body, Query, Path
+from fastapi import APIRouter, Depends, Response, status, Body, Query, Path
 from pydantic import BaseModel
 
 router = APIRouter(prefix="/blog", tags=["blog"])
+
+
+def required_functionality():
+    return {"message": "Learning FastAPI is impportant"}
 
 
 @router.get(
@@ -12,8 +16,12 @@ router = APIRouter(prefix="/blog", tags=["blog"])
     description="This api call simulates refresh blog",
     response_description="The list of available blogs",
 )
-def get_all_blog(page=1, page_size: Optional[int] = None):
-    return {"message": f"All {page_size} blogs on page {page}"}
+def get_all_blog(
+    page=1,
+    page_size: Optional[int] = None,
+    req_parameter: dict = Depends(required_functionality),
+):
+    return {"message": f"All {page_size} blogs on page {page}", "req": req_parameter}
 
 
 @router.get("/{id}/comments/{comment_id}", tags=["comment"])
@@ -50,9 +58,11 @@ def get_blog(id: int, response: Response):
         return {"error": f"blog {id} not found"}
     return {"message": f"Blog with id {id}"}
 
+
 class Image(BaseModel):
     url: str
     alias: str
+
 
 class BlogModel(BaseModel):
     title: str
@@ -60,18 +70,15 @@ class BlogModel(BaseModel):
     nb_comments: int
     published: Optional[bool]
     tags: List[str] = []
-    metadata: Dict[str, str] = { "key": "value"}
+    metadata: Dict[str, str] = {"key": "value"}
     image: Optional[Image] = None
 
 
 @router.post("/new/{id}")
 def create_blog(blog: BlogModel, id: int, version: int = 1):
     print(blog.title)
-    return {
-         "id": id,
-         "data": blog ,
-         "version": version
-        }
+    return {"id": id, "data": blog, "version": version}
+
 
 @router.post("/new/{id}/comment/{comment_id}")
 def create_comment(
@@ -82,21 +89,17 @@ def create_comment(
         title="Title of the comment",
         description="Some description for comment_title",
         alias="commentTitle",
-        deprecated=True
+        deprecated=True,
     ),
-    content: str = Body(...,
-        min_length=10,
-        max_length=12,
-        regex="^[a-z\s]*$"
-    ),
-    v: Optional[List[str]] = Query(['1.0', '1.1', '1.2']),
-    comment_id: int = Path(None, gt=5, le=10)
- ):
+    content: str = Body(..., min_length=10, max_length=12, regex="^[a-z\s]*$"),
+    v: Optional[List[str]] = Query(["1.0", "1.1", "1.2"]),
+    comment_id: int = Path(None, gt=5, le=10),
+):
     return {
         "blog": blog,
         "id": id,
         "comment_title": commend_title,
         "content": content,
         "version": v,
-        "comment_id": comment_id
+        "comment_id": comment_id,
     }
