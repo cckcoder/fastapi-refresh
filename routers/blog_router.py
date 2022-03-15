@@ -1,6 +1,5 @@
 from enum import Enum
-from turtle import title
-from typing import Optional
+from typing import List, Optional
 from fastapi import APIRouter, Response, status, Body, Query
 from pydantic import BaseModel
 
@@ -83,11 +82,13 @@ def create_comment(
         min_length=10,
         max_length=12,
         regex="^[a-z\s]*$"
-    )
+    ),
+    v: Optional[List[str]] = Query(None)
  ):
     return {
         "blog": blog,
         "id": id,
         "comment_id": commend_id,
-        "content": content
+        "content": content,
+        "version": v
     }
