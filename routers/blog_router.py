@@ -78,10 +78,16 @@ def create_comment(
         description="Some description for comment_id",
         alias="commentId",
         deprecated=True
+    ),
+    content: str = Body(...,
+        min_length=10,
+        max_length=12,
+        regex="^[a-z\s]*$"
     )
  ):
     return {
         "blog": blog,
         "id": id,
-        "comment_id": commend_id
+        "comment_id": commend_id,
+        "content": content
     }
