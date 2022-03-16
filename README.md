@@ -25,3 +25,8 @@ def index(id):
 * Allow a function to depend on another function
 * Import functionality seamlessly
     `req_param: dict = Depends(required_functionality`
+
+## Databases
+* Any relational database
+* ORM library
+* SQLAlchemy

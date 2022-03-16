@@ -1,0 +1,14 @@
+version: '3'
+services:
+  fastapi_pg:
+    image: mysql:latest
+    container_name: fastapi_pg
+    ports:
+       - "3306:3306"
+    volumes:
+      - ./dev_mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: tutorial
+      MYSQL_USER: codewizz_mysql
+      MYSQL_PASSWORD: FscJz5Q^
+      MYSQL_ROOT_PASSWORD: rootFscJz5Q^
