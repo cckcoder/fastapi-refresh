@@ -1,5 +1,9 @@
 ### Docker
 docker/
+
+### local db
+*.db
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/

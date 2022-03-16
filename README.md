@@ -30,3 +30,11 @@ def index(id):
 * Any relational database
 * ORM library
 * SQLAlchemy
+
+## Lib
+* SqlAlchemy
+    `pip install sqlalchemy`
+* passlib
+    `pip install passlib`
+* bcrypt
+    `pip install bcrypt`
