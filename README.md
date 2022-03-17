@@ -39,5 +39,15 @@ def index(id):
 * bcrypt
     `pip install bcrypt`
 
+## Process
+* Import required libraries: sqlalchemy, passlib, bycrypt
+* Create databased definition and run it in main.py
+* Create database models (taables)
+* Create functionality to write to database
+* Create schemas
+    * Data from user: UserBase
+    * Response to user: UserDisplay
+* Create API operation
+
 # Ref
 * [mysql docker-compose](https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee)
