@@ -49,5 +49,32 @@ def index(id):
     * Response to user: UserDisplay
 * Create API operation
 
+## Other concepts overview
+* Error handling
+* Custom responses
+* Headers
+* Cookies
+* Form data
+* CORS
+
+### Exceptions
+#### HTTP Status Code
+* 1xx informational
+* 2xx success
+* 3xx redirection
+* 4xx client error
+* 5xx server error
+
+#### Custom exception
+* Provide exception handler
+```python
+class StoryException(Exception):
+    def __init__(self, name: str):
+        self.name = name
+```
+
+
+
+
 # Ref
 * [mysql docker-compose](https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee)
