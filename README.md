@@ -72,7 +72,42 @@ class StoryException(Exception):
     def __init__(self, name: str):
         self.name = name
 ```
+#### Response
+* Standard response is a model, list, database model, dict etc.
+* We can customize the Response object
+* No data conversion
+    * `return Response(content=data, media_type"text/html")`
+* Why?
+    * add parameters: Headers, Cookies
+    * different types of response
+        * plain text
+        * xml
+        * html
+        * files
+        * streaming
+    * complex decisional logic
+    * better docs
 
+#### Request Headers
+* Add headers in request function definition
+```python
+@router.get("/")
+def fun(custom_header: Optional[str] = Header(None))
+    pass
+```
+* Automatic conversion between _ and -
+* List of headers
+```python
+@router.get("/")
+def fun(custom_header: Optional[List[str]] = Header(None))
+    pass
+```
+
+#### Response Headers
+```python
+def fun(response: Response)
+    response.headers['c-custom-header'] = 'abc'
+```
 
 
 
