@@ -1,10 +1,11 @@
-from typing import List
+from typing import List, Optional
 from fastapi import APIRouter, Depends
 
 from schemas import UserBase, UserDisplay
 from sqlalchemy.orm import Session
 from db.database import get_db
 from db import db_user
+from auth.oauth2 import oauth2_scheme
 
 
 router = APIRouter(prefix="/user", tags=["user"])
@@ -15,9 +16,8 @@ def create_user(request: UserBase, db: Session = Depends(get_db)):
     return db_user.create_user(db, request)
 
 
-# Read user
 @router.get("/", response_model=List[UserDisplay])
-def get_all_users(db: Session = Depends(get_db)):
+def get_all_users(db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     return db_user.get_all_users(db)
 
 

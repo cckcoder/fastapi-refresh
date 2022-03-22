@@ -139,6 +139,22 @@ app.add_middleware(
     allow_headers=["*"],
 )
 ```
+## Authentication
+* Authentication
+* Secureing an endpoint
+* Generating access token
+* User authentication
+
+### authentication
+* Complex topic
+* OAuth2 with username and password
+* how to generate SECRET_KEY
+    * [randomkeygen](https://randomkeygen.com/)
+    * cli `openssl rand -hex 32`
+
+#### Lib in use
+* jose `pip install python-jose[cryptography]` 
+
 
 
 # Ref

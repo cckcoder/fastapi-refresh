@@ -30,3 +30,13 @@ def get_article(db: Session, id: int):
             detail=f"Article with id {id} not found",
         )
     return article
+
+
+def get_all_article(db: Session):
+    articles = db.query(DbArticle).all()
+    if not articles:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Article with id {id} not found",
+        )
+    return articles

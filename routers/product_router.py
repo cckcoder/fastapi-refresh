@@ -18,12 +18,10 @@ def get_all_product():
 def get_product(
     response: Response,
     custom_header: Optional[str] = Header(None),
-    test_cookie: Optional[str] = Cookie(None)
+    test_cookie: Optional[str] = Cookie(None),
 ):
-    return {
-        "data": products,
-        "cookie": test_cookie
-    }
+    return {"data": products, "cookie": test_cookie}
+
 
 @router.get("/with_list_header")
 def get_product(response: Response, custom_header: Optional[List[str]] = Header(None)):

@@ -1,14 +1,21 @@
-from operator import imod
-from fastapi import FastAPI, Request, status, HTTPException
-from fastapi.responses import JSONResponse, PlainTextResponse
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from db import user_model
 from db.database import engine
 
-from routers import user_router, blog_router, article_router, product_router
+from routers import (
+    user_router,
+    blog_router,
+    article_router,
+    product_router,
+    authentication_router,
+)
 from utils.exceptions import StoryException
 
 app = FastAPI()
+
+app.include_router(authentication_router.router)
 app.include_router(user_router.router)
 app.include_router(article_router.router)
 app.include_router(blog_router.router)
@@ -41,5 +48,5 @@ app.add_middleware(
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"]
+    allow_headers=["*"],
 )
