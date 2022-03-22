@@ -1,5 +1,5 @@
 from typing import Optional, List
-from fastapi import APIRouter, Cookie, Response, Header
+from fastapi import APIRouter, Cookie, Form, Response, Header
 
 router = APIRouter(prefix="/product", tags=["product"])
 
@@ -28,4 +28,10 @@ def get_product(
 @router.get("/with_list_header")
 def get_product(response: Response, custom_header: Optional[List[str]] = Header(None)):
     response.headers["custom_response_header"] = ", ".join(custom_header)
+    return products
+
+
+@router.post("/new")
+def create_product(name: str = Form(...)):
+    products.append(name)
     return products

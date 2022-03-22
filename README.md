@@ -118,6 +118,13 @@ response.set_cookie(key="test_cookie", value="test_cookie_value")
 test_cookie: Optional[str] = Cookie(None)
 ```
 
+#### Form data
+* HTML form data `<form>...</form>`
+* application/x-www-form-urlencoded
+    `def create_product(name: str = Form(...)):`
+* If you would like to use Form
+    * MUST install `python-multipart` 
+
 
 # Ref
 * [mysql docker-compose](https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee)
