@@ -109,6 +109,14 @@ def fun(response: Response)
     response.headers['c-custom-header'] = 'abc'
 ```
 
+#### Cookies
+* Store information on the browser
+* Can accept str, list, dict, model etc.
+
+```python
+response.set_cookie(key="test_cookie", value="test_cookie_value")
+test_cookie: Optional[str] = Cookie(None)
+```
 
 
 # Ref
