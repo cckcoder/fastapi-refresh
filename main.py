@@ -1,5 +1,7 @@
+from operator import imod
 from fastapi import FastAPI, Request, status, HTTPException
 from fastapi.responses import JSONResponse, PlainTextResponse
+from fastapi.middleware.cors import CORSMiddleware
 from db import user_model
 from db.database import engine
 
@@ -31,3 +33,13 @@ def story_exception_handler(request: Request, exc: StoryException):
 
 
 user_model.Base.metadata.create_all(engine)
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)

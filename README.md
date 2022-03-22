@@ -125,6 +125,21 @@ test_cookie: Optional[str] = Cookie(None)
 * If you would like to use Form
     * MUST install `python-multipart` 
 
+#### CORS
+* Cross Origin Resource Sharing
+    * example localhost:8008 <--> localhost:8000
+    * this case CORS happend
+* Need to allow CORS
+```python
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+```
+
 
 # Ref
 * [mysql docker-compose](https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee)
