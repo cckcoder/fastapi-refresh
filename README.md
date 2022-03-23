@@ -172,5 +172,10 @@ app.add_middleware(
 * Received as bytes
 * Stored in memory
 
+### UploadFile
+* Provides more functionality
+* Stored in memory up to a  certain size, then on disk
+* Python file like object
+
 # Ref
 * [mysql docker-compose](https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee)

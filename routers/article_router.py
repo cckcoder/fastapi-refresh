@@ -9,7 +9,9 @@ from db import db_article
 from auth.oauth2 import get_current_user
 
 
-router = APIRouter(prefix="/article", tags=["article"], dependencies=[Depends(get_current_user)])
+router = APIRouter(
+    prefix="/article", tags=["article"], dependencies=[Depends(get_current_user)]
+)
 
 # Create article
 @router.post("/", response_model=ArticleDisplay)

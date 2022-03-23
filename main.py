@@ -10,7 +10,7 @@ from routers import (
     article_router,
     product_router,
     authentication_router,
-    file_router
+    file_router,
 )
 from utils.exceptions import StoryException
 
