@@ -10,12 +10,14 @@ from routers import (
     article_router,
     product_router,
     authentication_router,
+    file_router
 )
 from utils.exceptions import StoryException
 
 app = FastAPI()
 
 app.include_router(authentication_router.router)
+app.include_router(file_router.router)
 app.include_router(user_router.router)
 app.include_router(article_router.router)
 app.include_router(blog_router.router)

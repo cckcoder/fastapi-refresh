@@ -155,11 +155,22 @@ app.add_middleware(
 #### Lib in use
 * jose `pip install python-jose[cryptography]` 
 
-## Token
+#### Token
 * Verify token
 * Retrieve user associated with token
 * Secure more endpoints          
 
+## File section orverview
+* File
+* UploadFile
+* Making files statically available
+* Downloading file
+
+### File
+* Declared similarly to Form fields
+    * `def get_file(file: bytes = File(...)):`
+* Received as bytes
+* Stored in memory
 
 # Ref
 * [mysql docker-compose](https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee)
