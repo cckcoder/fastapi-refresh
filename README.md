@@ -155,6 +155,10 @@ app.add_middleware(
 #### Lib in use
 * jose `pip install python-jose[cryptography]` 
 
+## Token
+* Verify token
+* Retrieve user associated with token
+* Secure more endpoints          
 
 
 # Ref

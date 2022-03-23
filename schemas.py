@@ -16,7 +16,6 @@ class UserBase(BaseModel):
     email: str
     password: str
 
-
 class UserDisplay(BaseModel):
     id: int
     username: str
