@@ -177,5 +177,17 @@ app.add_middleware(
 * Stored in memory up to a  certain size, then on disk
 * Python file like object
 
+### Make file static
+* Need to install library `pip install aiofiles`
+### Download file
+* Provide more logic around file access
+* Provide security
+    ```python
+        @router.get("/download/{name}", response_class=FileResponse)
+        def download_file(name: str):
+            ...
+            return path
+    ```
+
 # Ref
 * [mysql docker-compose](https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee)
