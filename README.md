@@ -189,5 +189,22 @@ app.add_middleware(
             return path
     ```
 
+## Testing
+* Supports maintainablility and scalability
+* strive for 100% coverage
+* Easy with requests and pytest libraries
+
+### Example
+```python
+def test_get_all_posts():
+    response = client.get("/blog/all")
+    assert response.status.code == 200
+```
+
+### Library in use
+* requests `pip install requests`
+* pytest `pip install pytest`
+
+
 # Ref
 * [mysql docker-compose](https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee)
