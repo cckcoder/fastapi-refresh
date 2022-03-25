@@ -217,5 +217,15 @@ def test_get_all_posts():
 * We don't want the execution to block
 * await means the process can be paused
 * async defines a function with suspendable pointo
+
+### Background tasks
+* Functionality to be run after the call has been complete
+* Can have access to request and response
+```python
+@router.get("/{id}")
+def read_item(id: str, bt: BackgroundTasks):
+    bt.add_task(some_functionality, params)
+```
+
 # Ref
 * [mysql docker-compose](https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee)

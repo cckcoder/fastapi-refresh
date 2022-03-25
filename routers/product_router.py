@@ -2,7 +2,7 @@ from time import time
 from typing import Optional, List
 import time
 
-from fastapi import APIRouter, Cookie, Form, Response, Header
+from fastapi import APIRouter, BackgroundTasks, Cookie, Form, Response, Header
 
 router = APIRouter(prefix="/product", tags=["product"])
 
@@ -12,6 +12,9 @@ async def time_consuming_functionality():
     time.sleep(5)
     return "ok"
 
+
+def log_route_call(message: str):
+    print(f"My API {message}")
 
 
 @router.get("/")
@@ -39,6 +42,7 @@ def get_product(response: Response, custom_header: Optional[List[str]] = Header(
 
 
 @router.post("/new")
-def create_product(name: str = Form(...)):
+def create_product(name: str = Form(...), bt: BackgroundTasks = None):
+    bt.add_task(log_route_call, f"create_product function")
     products.append(name)
     return products
