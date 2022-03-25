@@ -226,6 +226,9 @@ def test_get_all_posts():
 def read_item(id: str, bt: BackgroundTasks):
     bt.add_task(some_functionality, params)
 ```
-
+### WebSockets
+* Two way communication
+* Keep connection open
+* Need websocket lib `pip install websockets`
 # Ref
 * [mysql docker-compose](https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee)

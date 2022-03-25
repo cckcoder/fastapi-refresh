@@ -8,6 +8,7 @@ router = APIRouter(prefix="/product", tags=["product"])
 
 products = ["watch", "camera", "phone"]
 
+
 async def time_consuming_functionality():
     time.sleep(5)
     return "ok"

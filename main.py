@@ -45,6 +45,7 @@ def story_exception_handler(request: Request, exc: StoryException):
 
 user_model.Base.metadata.create_all(engine)
 
+
 @app.middleware("http")
 async def add_middleware(request: Request, call_next):
     start_time = time.time()
@@ -52,6 +53,7 @@ async def add_middleware(request: Request, call_next):
     duration = time.time() - start_time
     response.headers["duration"] = str(duration)
     return response
+
 
 origins = ["*"]
 
