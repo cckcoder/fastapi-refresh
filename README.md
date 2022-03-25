@@ -205,6 +205,17 @@ def test_get_all_posts():
 * requests `pip install requests`
 * pytest `pip install pytest`
 
+## More Concepts
+* Async await
+* Templates
+* Middleware
+* Background tasks
+* WebSockets
 
+### Concurrency
+* Functionality can be asynchronous
+* We don't want the execution to block
+* await means the process can be paused
+* async defines a function with suspendable pointo
 # Ref
 * [mysql docker-compose](https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee)
