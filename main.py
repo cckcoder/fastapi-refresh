@@ -4,6 +4,7 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from db import user_model
 from db.database import engine
+import time
 
 from routers import (
     user_router,
@@ -43,6 +44,14 @@ def story_exception_handler(request: Request, exc: StoryException):
 
 
 user_model.Base.metadata.create_all(engine)
+
+@app.middleware("http")
+async def add_middleware(request: Request, call_next):
+    start_time = time.time()
+    response = await call_next(request)
+    duration = time.time() - start_time
+    response.headers["duration"] = str(duration)
+    return response
 
 origins = ["*"]
 
